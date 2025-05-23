@@ -56,7 +56,9 @@ export default function Search() {
           type="search"
           required
         />
-        <button type="submit">Pesquisar</button>
+        <button className="button-default" type="submit">
+          Pesquisar
+        </button>
       </form>
 
       {loading && <Spinner animation="border" />}
@@ -68,7 +70,9 @@ export default function Search() {
       </MoviesStack>
 
       {movies.length > 0 && currentPage < totalPages && (
-        <button onClick={() => handleLoadMore()}>Carregar mais...</button>
+        <button className="button-default" onClick={() => handleLoadMore()}>
+          Carregar mais...
+        </button>
       )}
     </SearchContainer>
   );

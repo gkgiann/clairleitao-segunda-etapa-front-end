@@ -15,18 +15,6 @@ export const HomeContainer = styled(Col)`
 
   button {
     margin: 4rem 0 6rem;
-    padding: 0.8rem 1.2rem;
-    border: 0;
-    border-radius: 4px;
-    font-size: 2rem;
-    background: var(--text);
-    color: var(--background);
-
-    transition: 0.2s;
-
-    &:hover {
-      opacity: 0.8;
-    }
   }
 `;
 

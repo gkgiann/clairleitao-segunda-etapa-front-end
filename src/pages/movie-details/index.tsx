@@ -6,18 +6,55 @@ import type { DetailedMovie } from "../../types/movie.type";
 import { Col, Row, Spinner } from "react-bootstrap";
 
 const IMAGE_URL = import.meta.env.VITE_TMDB_IMAGE_URL;
+const LIST_ID = import.meta.env.VITE_TMDB_LIST_ID;
+const SESSION_ID = import.meta.env.VITE_TMDB_SESSION_ID;
 
 export default function MovieDetails() {
   const { id } = useParams();
   const [movie, setMovie] = useState<DetailedMovie>();
+  const [movieInList, setMovieInList] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    api.get(`movie/${id}`).then((res) => {
+    api.get(`/list/${LIST_ID}/item_status?movie_id=${id}`).then((res) => {
       const { data } = res;
-      console.log(data);
-      setMovie(data);
+      setMovieInList(data.item_present);
+
+      api.get(`movie/${id}`).then((res) => {
+        const { data } = res;
+        console.log(data);
+        setMovie(data);
+      });
     });
   }, []);
+
+  function handleAddToList() {
+    setLoading(true);
+    api
+      .post(`/list/${LIST_ID}/add_item?session_id=${SESSION_ID}`, {
+        media_id: id,
+      })
+      .then((res) => {
+        const { data } = res;
+        console.log(data);
+        setMovieInList(true);
+        setLoading(false);
+      });
+  }
+
+  function handleRemoveFromList() {
+    setLoading(true);
+    api
+      .post(`/list/${LIST_ID}/remove_item?session_id=${SESSION_ID}`, {
+        media_id: id,
+      })
+      .then((res) => {
+        const { data } = res;
+        console.log(data);
+        setMovieInList(false);
+        setLoading(false);
+      });
+  }
 
   return (
     <MovieDetailsContainer>
@@ -36,6 +73,22 @@ export default function MovieDetails() {
             <strong>{movie.runtime} minutos</strong>
 
             <strong>{movie.release_date.split("-").reverse().join("/")}</strong>
+
+            {movieInList ? (
+              <button
+                onClick={() => handleRemoveFromList()}
+                className="button-default"
+              >
+                {loading ? "Removendo..." : "Remover da lista"}
+              </button>
+            ) : (
+              <button
+                onClick={() => handleAddToList()}
+                className="button-default"
+              >
+                {loading ? "Adicionando..." : "+ Adicionar à lista"}
+              </button>
+            )}
           </Col>
         </Row>
       ) : (

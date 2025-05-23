@@ -40,7 +40,9 @@ export default function Home() {
       </MoviesStack>
 
       {movies.length > 0 && (
-        <button onClick={() => handleLoadMore()}>Carregar mais...</button>
+        <button className="button-default" onClick={() => handleLoadMore()}>
+          Carregar mais...
+        </button>
       )}
     </HomeContainer>
   );

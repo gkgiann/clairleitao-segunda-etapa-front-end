@@ -30,6 +30,6 @@ Especificações:
 
 [x] Use os hooks do React, como useState e useEffect.
 
-[] Realize pelo menos uma requisição GET e uma POST utilizando a API do TMDB.
+[x] Realize pelo menos uma requisição GET e uma POST utilizando a API do TMDB.
 
 [x] Obs: O uso de ferramentas de IA não é permitido. O objetivo é avaliar exclusivamente seu conhecimento e capacidade técnica.
