@@ -28,6 +28,8 @@ export default function List() {
   }
 
   function handleClearList() {
+    if (movies.length === 0) return;
+
     api
       .post(`/list/${LIST_ID}/clear?session_id=${SESSION_ID}&confirm=true`)
       .then((res) => {
