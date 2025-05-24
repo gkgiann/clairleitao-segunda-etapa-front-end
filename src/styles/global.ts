@@ -8,8 +8,6 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     :root {
-        /* --background:rgb(2, 23, 53);
-        --text:rgb(238, 246, 250); */
         --text:rgb(2, 23, 53);
         --background:rgb(238, 246, 250);
     }

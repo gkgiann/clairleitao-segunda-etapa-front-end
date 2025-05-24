@@ -1,7 +1,7 @@
-import { Col, Stack } from "react-bootstrap";
+import { Container, Stack } from "react-bootstrap";
 import styled from "styled-components";
 
-export const HomeContainer = styled(Col)`
+export const HomeContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   justify-content: center;
