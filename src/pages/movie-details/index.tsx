@@ -23,7 +23,6 @@ export default function MovieDetails() {
 
       api.get(`movie/${id}`).then((res) => {
         const { data } = res;
-        console.log(data);
         setMovie(data);
       });
     });
@@ -37,7 +36,6 @@ export default function MovieDetails() {
       })
       .then((res) => {
         const { data } = res;
-        console.log(data);
         setMovieInList(true);
         setLoading(false);
       });
@@ -51,7 +49,6 @@ export default function MovieDetails() {
       })
       .then((res) => {
         const { data } = res;
-        console.log(data);
         setMovieInList(false);
         setLoading(false);
       });

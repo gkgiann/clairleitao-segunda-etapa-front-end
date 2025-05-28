@@ -20,7 +20,6 @@ export default function Search() {
     );
 
     const results: Movie[] = data.results;
-    console.log(data);
 
     setTotalPages(data.total_pages);
 

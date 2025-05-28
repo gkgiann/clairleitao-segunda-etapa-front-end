@@ -16,7 +16,6 @@ export default function Home() {
   function fetchMovies(page: number) {
     api.get(`/trending/movie/week?page=${page}`).then((res) => {
       const results: Movie[] = res.data.results;
-      console.log(res.data);
 
       setMovies([...movies, ...results]);
     });

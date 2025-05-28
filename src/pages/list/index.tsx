@@ -20,7 +20,6 @@ export default function List() {
     setLoading(true);
     api.get(`/list/${LIST_ID}`).then((res) => {
       const results: Movie[] = res.data.items;
-      console.log(res.data);
 
       setMovies(results);
       setLoading(false);
@@ -34,8 +33,6 @@ export default function List() {
       .post(`/list/${LIST_ID}/clear?session_id=${SESSION_ID}&confirm=true`)
       .then((res) => {
         const { data } = res;
-
-        console.log(data);
 
         fetchMovies();
       });
