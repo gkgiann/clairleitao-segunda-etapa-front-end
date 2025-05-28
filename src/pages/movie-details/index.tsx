@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { api } from "../../lib/axios";
 import type { DetailedMovie } from "../../types/movie.type";
 import { Col, Row, Spinner } from "react-bootstrap";
+import { minutesToHours } from "../../utils/minutesToHours";
 
 const IMAGE_URL = import.meta.env.VITE_TMDB_IMAGE_URL;
 const LIST_ID = import.meta.env.VITE_TMDB_LIST_ID;
@@ -70,7 +71,7 @@ export default function MovieDetails() {
 
             <strong>{movie?.genres.map((g) => g.name).join(", ")}</strong>
 
-            <strong>{movie.runtime} minutos</strong>
+            <strong>{minutesToHours(movie.runtime)}</strong>
 
             <strong>{movie.release_date.split("-").reverse().join("/")}</strong>
 
