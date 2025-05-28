@@ -31,9 +31,7 @@ export default function List() {
 
     api
       .post(`/list/${LIST_ID}/clear?session_id=${SESSION_ID}&confirm=true`)
-      .then((res) => {
-        const { data } = res;
-
+      .then(() => {
         fetchMovies();
       });
   }

@@ -34,8 +34,7 @@ export default function MovieDetails() {
       .post(`/list/${LIST_ID}/add_item?session_id=${SESSION_ID}`, {
         media_id: id,
       })
-      .then((res) => {
-        const { data } = res;
+      .then(() => {
         setMovieInList(true);
         setLoading(false);
       });
@@ -47,8 +46,7 @@ export default function MovieDetails() {
       .post(`/list/${LIST_ID}/remove_item?session_id=${SESSION_ID}`, {
         media_id: id,
       })
-      .then((res) => {
-        const { data } = res;
+      .then(() => {
         setMovieInList(false);
         setLoading(false);
       });
